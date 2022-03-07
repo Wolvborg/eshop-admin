@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var shell = require('shelljs');
+
+/**
+ * Shell Executions code
+ */
+shell.echo('Deleting dist folder if exist');
+shell.rm('-rf', 'dist');
+shell.echo('Deleted dist folder');

@@ -31,5 +31,5 @@
     "frontend/tests/**/*.ts",
     "frontend/tests/**/*.tsx"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "frontend"]
 }

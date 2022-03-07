@@ -4,14 +4,14 @@
   "private": true,
   "scripts": {
     "start": "npm run build && node ./bin/www",
-    "start:debug": "npm run build:be && npm run copy-asset && DEBUG=file:* node ./bin/www",
+    "start:server": "npm run build:be && npm run postbuild && DEBUG=file:* node ./bin/www",
     "serve": "vue-cli-service serve",
     "build:be": "tsc",
-    "build:fe": "vue-cli-service build && npm run move-fe",
-    "build": "npm run build:be && npm run build:fe && npm run move:fe",
-    "lint": "vue-cli-service lint",
-    "copy-asset": "./bin/copy-asset.sh",
-    "move:fe": "mkdir dist/fe && mv temp/* dist/fe && rm -rf temp"
+    "build:fe": "vue-cli-service build",
+    "prebuild": "node ./bin/prebuild",
+    "postbuild": "node ./bin/postbuild",
+    "build": "npm run build:be && npm run build:fe",
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -21,6 +21,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
+    "shelljs": "^0.8.5",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"

@@ -1,0 +1,21 @@
+#!/usr/bin/env node
+
+/**
+ * Module dependencies.
+ */
+var shell = require('shelljs');
+
+/**
+ * Shell Executions code
+ */
+shell.echo('Creating a dist/fe folder');
+shell.mkdir('dist/fe');
+
+shell.echo('Moving the content from temp folder in dist/fe folder');
+shell.mv('temp/*', ' dist/fe');
+
+shell.echo('Deleting temp folder');
+shell.rm('-rf', 'temp');
+
+shell.echo('Copying view and public files from beckend to dist/temp');
+shell.cp('-r', ['backend/public', 'backend/views'], ' dist/server/');
