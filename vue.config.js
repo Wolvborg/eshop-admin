@@ -9,4 +9,8 @@ module.exports = {
     },
   },
   outputDir: 'temp',
+  assetsDir: 'public',
+  devServer: {
+    proxy: 'http://localhost:3000',
+  },
 };
