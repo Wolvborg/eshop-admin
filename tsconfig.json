@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "CommonJS",
+    "strict": true,
+    "jsx": "preserve",
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "noEmitOnError": true,
+    "removeComments": true,
+    "outDir": "dist/server",
+    "paths": {
+      "@/*": ["frontend/src/*"]
+    },
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  },
+  "include": [
+    "backend/**/*.ts",
+    "backend/**/*.tsx",
+    "backend/tests/**/*.ts",
+    "backend/tests/**/*.tsx"
+  ],
+  "exclude": ["node_modules"]
+}
