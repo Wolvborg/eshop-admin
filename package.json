@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "npm run build && node ./bin/www",
-    "start:server": "npm run build:be && npm run postbuild && DEBUG=file:* node ./bin/www",
-    "serve": "vue-cli-service serve",
+    "start:debug": "npm run build && DEBUG=file:* node ./bin/www",
+    "serve": "vue-cli-service serve --open frontend/main.ts",
     "build:be": "tsc",
     "build:fe": "vue-cli-service build",
     "prebuild": "node ./bin/prebuild",
@@ -15,15 +15,14 @@
     "tailwind-config-viewer": "tailwind-config-viewer -o"
   },
   "dependencies": {
-    "autoprefixer": "^9.8.8",
     "cookie-parser": "~1.4.4",
     "core-js": "^3.6.5",
     "debug": "~2.6.9",
+    "dotenv": "^16.0.0",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "postcss": "^7.0.39",
     "shelljs": "^0.8.5",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17",
     "vue": "^2.6.11",
@@ -50,10 +49,13 @@
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.4.1",
     "eslint-plugin-vue": "^6.2.2",
+    "postcss": "^8.4.8",
+    "postcss-nested": "^4.2.3",
     "prettier": "^2.2.1",
     "tailwind-config-viewer": "^1.6.3",
     "ts-node": "^10.6.0",
     "typescript": "~4.1.5",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "autoprefixer": "^9.8.8"
   }
 }

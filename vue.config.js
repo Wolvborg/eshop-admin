@@ -1,4 +1,11 @@
 module.exports = {
+  chainWebpack: (config) => {
+    config.plugin('html').tap((args) => {
+      args[0].title = process.env.VUE_APP_TITLE;
+      args[0].template = './frontend/public/index.html';
+      return args;
+    });
+  },
   configureWebpack: {
     entry: './frontend/main.ts',
     resolve: {
