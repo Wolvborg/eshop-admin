@@ -4,10 +4,11 @@
  * Module dependencies.
  */
 var shell = require('shelljs');
+var chalk = require('chalk');
 
 /**
  * Shell Executions code
  */
-shell.echo('Deleting dist folder if exist');
+shell.echo(chalk.blue('Deleting dist folder if exist'));
 shell.rm('-rf', 'dist');
 shell.echo('Deleted dist folder');
