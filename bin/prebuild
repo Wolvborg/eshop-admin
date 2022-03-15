@@ -11,4 +11,4 @@ var chalk = require('chalk');
  */
 shell.echo(chalk.blue('Deleting dist folder if exist'));
 shell.rm('-rf', 'dist');
-shell.echo('Deleted dist folder');
+shell.echo(chalk.blue('Deleted dist folder'));

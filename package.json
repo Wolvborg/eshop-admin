@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run build && node ./bin/www",
-    "start:debug": "npm run build && DEBUG=file:* node ./bin/www",
+    "start": "npm run build && node dist/index.js",
+    "start:debug": "NODE_ENV=development npm run build && DEBUG=file:* node dist/index.js",
     "serve": "vue-cli-service serve --open frontend/main.ts",
     "build:be": "tsc",
     "build:fe": "vue-cli-service build frontend/main.ts",

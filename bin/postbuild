@@ -4,12 +4,13 @@
  * Module dependencies.
  */
 var shell = require('shelljs');
+var chalk = require('chalk');
 
 /**
  * Shell Executions code
  */
-shell.echo('Moving the content from temp folder in dist folder');
+shell.echo(chalk.blue('Moving the content from temp folder in dist folder'));
 shell.mv('temp/*', ' dist');
 
-shell.echo('Deleting temp folder');
+shell.echo(chalk.blue('Deleting temp folder'));
 shell.rm('-rf', 'temp');
