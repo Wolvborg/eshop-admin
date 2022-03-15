@@ -6,6 +6,7 @@ module.exports = {
       return args;
     });
   },
+
   configureWebpack: {
     resolve: {
       alias: {
@@ -14,9 +15,13 @@ module.exports = {
       },
     },
   },
+
   outputDir: 'temp',
   assetsDir: 'public',
+
   devServer: {
     proxy: 'http://localhost:3000',
   },
+
+  transpileDependencies: ['vuetify'],
 };
