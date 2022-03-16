@@ -1,5 +1,5 @@
 import Vue from 'vue';
-import Vuetify from '../../node_modules/vuetify/lib/framework';
+import Vuetify from '../../node_modules/vuetify/lib';
 import '../../node_modules/material-design-icons-iconfont/dist/material-design-icons.css';
 
 Vue.use(Vuetify);
