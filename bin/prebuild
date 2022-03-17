@@ -9,6 +9,12 @@ var chalk = require('chalk');
 /**
  * Shell Executions code
  */
-shell.echo(chalk.blue('Deleting dist folder if exist'));
+shell.echo(
+  chalk.bgHex('#7cfc00').black.bold('RUNNING ON SSH'),
+  chalk.hex('#7cfc00').italic('Deleting dist folder if exist')
+);
 shell.rm('-rf', 'dist');
-shell.echo(chalk.blue('Deleted dist folder'));
+shell.echo(
+  chalk.bgHex('#7cfc00').black.bold('RUNNING ON SSH'),
+  chalk.hex('#7cfc00').italic('Deleted dist folder')
+);

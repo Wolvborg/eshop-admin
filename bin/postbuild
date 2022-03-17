@@ -9,8 +9,14 @@ var chalk = require('chalk');
 /**
  * Shell Executions code
  */
-shell.echo(chalk.blue('Moving the content from temp folder in dist folder'));
+shell.echo(
+  chalk.bgHex('#7cfc00').black.bold('RUNNING ON SSH'),
+  chalk.hex('#7cfc00').italic('Moving the content from temp folder in dist folder')
+);
 shell.mv('temp/*', ' dist');
 
-shell.echo(chalk.blue('Deleting temp folder'));
+shell.echo(
+  chalk.bgHex('#7cfc00').black.bold('RUNNING ON SSH'),
+  chalk.hex('#7cfc00').italic('Deleting temp folder')
+);
 shell.rm('-rf', 'temp');

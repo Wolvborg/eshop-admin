@@ -3,6 +3,9 @@ import Middleware from './middleware';
 import ErrorHandlers from './errorHandlers';
 import Routes from './routes';
 import Locals from './locals';
+import Debug from 'debug';
+
+const debug = Debug('file:providers/express');
 
 class Express {
   private exppressInstance: Application;
@@ -17,23 +20,25 @@ class Express {
   }
 
   private mountErrorHandlers(_expressApp: Application): Application {
-    _expressApp = ErrorHandlers.init(_expressApp);
-    return _expressApp;
+    debug('Mounting ErrorHandlers');
+    return ErrorHandlers.init(_expressApp);
   }
 
   private mountRoutes(_expressApp: Application): Application {
-    _expressApp = Routes.init(_expressApp);
+    debug('Mounting Routes');
 
-    return _expressApp;
+    return Routes.init(_expressApp);
   }
 
   private mountMiddlewares(_expressApp: Application): Application {
-    _expressApp = Middleware.init(_expressApp);
+    debug('Mounting Middleware');
 
-    return _expressApp;
+    return Middleware.init(_expressApp);
   }
 
   private setAppLocals(_expressApp: Application): Application {
+    debug('Setting Express Locals');
+
     const config = Locals.getEnvVariables();
 
     _expressApp.locals = { ...config };
@@ -44,7 +49,9 @@ class Express {
   public init(): void {
     const PORT: number | string = process.env.PORT || 3000;
 
-    this.exppressInstance.listen(PORT);
+    this.exppressInstance.listen(PORT, () => {
+      debug(`Server Listing on ${PORT}`);
+    });
   }
 }
 

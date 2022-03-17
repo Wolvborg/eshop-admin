@@ -1,14 +1,17 @@
-import express, { Application } from 'express';
-import path from 'path';
+import { Application } from 'express';
+import Views from '../middleware/views';
+import Http from '../middleware/http';
+import Debug from 'debug';
+
+const debug = Debug('file:providers/middleware');
 
 class Middleware {
-  private static setPublicDirectory(_expressApp: Application): Application {
-    _expressApp.use('/public', express.static(path.join(__dirname, '../public')));
-    return _expressApp;
-  }
-
   public static init(_expressApp: Application): Application {
-    _expressApp = Middleware.setPublicDirectory(_expressApp);
+    debug('Mounting Views Middleware');
+    _expressApp = Views.mount(_expressApp);
+
+    debug('Mounting Https Middleware');
+    _expressApp = Http.mount(_expressApp);
 
     return _expressApp;
   }
