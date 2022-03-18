@@ -1,21 +1,17 @@
 <template>
   <v-app>
-    <v-navigation-drawer temporary v-model="drawer" app>
+    <v-navigation-drawer v-if="!isAuthPage" temporary v-model="drawer" app>
       <!-- -->
     </v-navigation-drawer>
 
-    <nav-bar @open-drawer="openDrawer" />
+    <nav-bar v-if="!isAuthPage" @open-drawer="openDrawer" />
 
     <!-- Sizes your content based upon application components -->
     <v-main>
-      <!-- Provides the application the proper gutter -->
-      <v-container fluid>
-        <!-- If using vue-router -->
-        <router-view></router-view>
-      </v-container>
+      <router-view></router-view>
     </v-main>
 
-    <v-footer app>
+    <v-footer v-if="!isAuthPage" app>
       <!-- -->
     </v-footer>
   </v-app>
@@ -31,6 +27,7 @@
 
     data: () => ({
       drawer: false,
+      isAuthPage: true,
     }),
 
     methods: {

@@ -1,0 +1,14 @@
+$sizes_rem: 1, 2, 3, 4, 5, 6, 7, 8, 9;
+$sizes_per: 10, 20, 30, 40, 50, 60, 70, 80;
+
+@each $size in $sizes_rem {
+  .w-#{$size} {
+    width: #{$size + 'rem'};
+  }
+}
+
+@each $size in $sizes_per {
+  .w-#{$size} {
+    width: #{$size + '%'};
+  }
+}
