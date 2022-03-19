@@ -1,11 +1,14 @@
 import * as dotenv from 'dotenv';
-dotenv.config();
-
 class Locals {
-  public static getEnvVariables(): Record<string, string> {
-    return {
-      API_PREFIX: process.env.API_PREFIX || 'api',
-    };
+  public static getEnvVariables(): dotenv.DotenvConfigOutput {
+    let parsedEnv: dotenv.DotenvConfigOutput;
+    if (process.env.NODE_ENV === 'development') {
+      parsedEnv = dotenv.config({ path: '.env.development', debug: true });
+    } else {
+      parsedEnv = dotenv.config();
+    }
+
+    return parsedEnv;
   }
 }
 

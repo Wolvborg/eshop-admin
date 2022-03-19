@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open frontend/main.ts",
+    "dry": "npm run build:be && node dist/index.js",
     "build": "npm run build:be && npm run build:fe",
     "lint": "vue-cli-service lint",
     "build:be": "tsc",
@@ -11,8 +12,7 @@
     "postbuild": "node ./bin/postbuild",
     "prebuild": "node ./bin/prebuild",
     "start": "npm run build && node dist/index.js",
-    "start:debug": "NODE_ENV=development npm run build && DEBUG=file:* node dist/index.js",
-    "tailwind-config-viewer": "tailwind-config-viewer -o"
+    "start:debug": "NODE_ENV=development DEBUG=file:* npm run start"
   },
   "dependencies": {
     "axios": "^0.26.1",
@@ -24,6 +24,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
+    "mongoose": "^6.2.7",
     "morgan": "~1.9.1",
     "shelljs": "^0.8.5",
     "vue": "^2.6.11",
