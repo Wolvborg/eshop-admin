@@ -1,10 +1,25 @@
 import Vue from 'vue';
 import VueRouter, { RouteConfig } from 'vue-router';
-import Home from '../views/Home';
+import Home from '../views/Home.vue';
 
-const Auth = () => import(/* webpackChunkName: "auth" */ '../views/Auth');
-const AuthLogin = () => import(/* webpackChunkName: "auth" */ '../views/auth/AuthLogin');
-const AuthSignup = () => import(/* webpackChunkName: "auth" */ '../views/auth/AuthSignup');
+const Auth = () =>
+  import(
+    /* webpackChunkName: "auth-page" */
+    /* webpackMode: "lazy" */
+    '../views/Auth.vue'
+  );
+const AuthLogin = () =>
+  import(
+    /* webpackChunkName: "auth-page" */
+    /* webpackMode: "lazy" */
+    '../views/auth/AuthLogin.vue'
+  );
+const AuthSignup = () =>
+  import(
+    /* webpackChunkName: "auth-page" */
+    /* webpackMode: "lazy" */
+    '../views/auth/AuthSignup.vue'
+  );
 
 Vue.use(VueRouter);
 
@@ -23,13 +38,11 @@ const routes: Array<RouteConfig> = [
         path: 'signup',
         name: 'AuthLogin',
         component: AuthLogin,
-        meta: { transition: 'slide-left' },
       },
       {
         path: 'login',
         name: 'AuthSignup',
         component: AuthSignup,
-        meta: { transition: 'slide-right' },
       },
     ],
   },

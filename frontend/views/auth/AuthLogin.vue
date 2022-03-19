@@ -3,7 +3,13 @@
     <p class="text-h4 black--text">Login Up</p>
 
     <form class="mb-4">
-      <v-text-field v-model="email" label="E-mail" required></v-text-field>
+      <v-text-field
+        v-model="email"
+        label="E-mail"
+        hint="A mail will be sent to this email ID"
+        required
+        :rules="[rules.required, rules.email]"
+      ></v-text-field>
 
       <v-text-field
         v-model="password"
@@ -30,20 +36,22 @@
 </template>
 <script lang="ts">
   import Vue from 'vue';
+  import inputValidator from '../../mixin/input-validators';
+
   export default Vue.extend({
+    mixins: [inputValidator],
+
     data: () => ({
-      name: '',
       email: '',
       password: '',
-      roles: [],
       showPassword: false,
     }),
     methods: {
       submit() {
-        console.log('onSubmit');
+        //TODO
       },
       clear() {
-        console.log('onClear');
+        //TODO
       },
     },
   });

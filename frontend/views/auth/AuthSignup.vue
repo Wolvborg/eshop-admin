@@ -3,19 +3,35 @@
     <p class="text-h4 black--text">Sign Up</p>
 
     <form class="mb-4">
-      <v-text-field
-        v-model="name"
-        :counter="15"
-        hint="First Name + Last Name"
-        label="Name"
-        required
-      ></v-text-field>
+      <v-row>
+        <v-col sm="6">
+          <v-text-field
+            v-model="fName"
+            hint="First Name"
+            label="First Name"
+            required
+            :counter="10"
+            :rules="[rules.required, rules.counter]"
+          ></v-text-field>
+        </v-col>
 
+        <v-col sm="6">
+          <v-text-field
+            v-model="lName"
+            hint="Last Name"
+            label="Last Name"
+            required
+            :counter="10"
+            :rules="[rules.required, rules.counter]"
+          ></v-text-field>
+        </v-col>
+      </v-row>
       <v-text-field
         v-model="email"
         label="E-mail"
         hint="A mail will be sent to this email ID"
         required
+        :rules="[rules.required, rules.email]"
       ></v-text-field>
 
       <v-text-field
@@ -49,9 +65,13 @@
 </template>
 <script lang="ts">
   import Vue from 'vue';
+  import inputValidator from '../../mixin/input-validators';
+
   export default Vue.extend({
+    mixins: [inputValidator],
     data: () => ({
-      name: '',
+      fName: '',
+      lName: '',
       email: '',
       password: '',
       selectedUserRole: 1,
@@ -64,7 +84,7 @@
     }),
     methods: {
       submit() {
-        console.log('onSubmit');
+        //TODO
       },
     },
   });
