@@ -65,6 +65,9 @@
 </template>
 <script lang="ts">
   import Vue from 'vue';
+  import ERole from '../../../typescript/enum/UserRolesEnum';
+  import ISignUp from '../../../typescript/interface/SignupFormInterface';
+  import axios, { AxiosResponse } from 'axios';
   import inputValidator from '../../mixin/input-validators';
 
   export default Vue.extend({
@@ -74,17 +77,29 @@
       lName: '',
       email: '',
       password: '',
-      selectedUserRole: 1,
+      selectedUserRole: ERole.ADMIN,
       userGroups: [
-        { label: 'Superadmin', id: 0 },
-        { label: 'Admin', id: 1 },
-        { label: 'Staff', id: 2 },
+        { label: 'Superadmin', id: ERole.SUPERADMIN },
+        { label: 'Admin', id: ERole.ADMIN },
+        { label: 'Staff', id: ERole.STAFF },
       ],
       showPassword: false,
     }),
     methods: {
       submit() {
-        //TODO
+        //TODO Implement form validation before sending request
+
+        let userSignup: ISignUp = {
+          firstName: this.fName,
+          lastName: this.lName,
+          email: this.email,
+          password: this.password,
+          role: this.selectedUserRole,
+        };
+
+        axios.post('/api/signup', userSignup).then((response: AxiosResponse) => {
+          console.log(response.data);
+        });
       },
     },
   });

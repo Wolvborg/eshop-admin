@@ -3,7 +3,9 @@ import Controller from '../controller/Admin';
 
 const router = express.Router();
 
-/* GET home page. */
-router.get('/user/:id', Controller.UserController);
+/**
+ * User Signup route
+ */
+router.post('/signup', Controller.UserController);
 
 export default router;
