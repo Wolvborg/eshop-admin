@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
-import Debug from 'debug';
 import UserModel from '../models/UserModel';
-const debug = Debug('file:controller/Admin');
+import ResponseData from '../utils/responseData';
 
 class UserController {
   /**
@@ -12,7 +11,9 @@ class UserController {
 
     await User.save();
 
-    _res.send({ data: 'Created' });
+    const response = new ResponseData(201, null, null);
+
+    _res.status(response.status).send(response);
   }
 }
 

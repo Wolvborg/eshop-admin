@@ -65,8 +65,9 @@
 </template>
 <script lang="ts">
   import Vue from 'vue';
-  import ERole from '../../../typescript/enum/UserRolesEnum';
-  import ISignUp from '../../../typescript/interface/SignupFormInterface';
+  import ERole from '@/enum/UserRolesEnum';
+  import ISignUp from '../../interface/SignupFormInterface';
+  import IResponseInterface from '../../interface/ResponseInterface';
   import axios, { AxiosResponse } from 'axios';
   import inputValidator from '../../mixin/input-validators';
 
@@ -98,7 +99,11 @@
         };
 
         axios.post('/api/signup', userSignup).then((response: AxiosResponse) => {
-          console.log(response.data);
+          let data: IResponseInterface = response.data;
+          if (data.status === 201) {
+            this.$store.dispatch('global/authenticate', true);
+            this.$router.push('/');
+          }
         });
       },
     },

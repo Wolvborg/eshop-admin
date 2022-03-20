@@ -1,17 +1,17 @@
 <template>
   <v-app>
-    <v-navigation-drawer v-if="!isAuthPage" temporary v-model="drawer" app>
+    <v-navigation-drawer v-if="isAuthenticated" temporary v-model="drawer" app>
       <!-- -->
     </v-navigation-drawer>
 
-    <nav-bar v-if="!isAuthPage" @open-drawer="openDrawer" />
+    <nav-bar v-if="isAuthenticated" @open-drawer="openDrawer" />
 
     <!-- Sizes your content based upon application components -->
     <v-main>
       <router-view></router-view>
     </v-main>
 
-    <v-footer v-if="!isAuthPage" app>
+    <v-footer v-if="isAuthenticated" app>
       <!-- -->
     </v-footer>
   </v-app>
@@ -20,6 +20,7 @@
 <script lang="ts">
   import Vue from 'vue';
   import NavBar from './components/NavBar.vue';
+  import { mapState } from 'vuex';
 
   export default Vue.extend({
     name: 'App',
@@ -29,6 +30,10 @@
       drawer: false,
       isAuthPage: true,
     }),
+
+    computed: {
+      ...mapState('global', ['isAuthenticated']),
+    },
 
     methods: {
       openDrawer() {
