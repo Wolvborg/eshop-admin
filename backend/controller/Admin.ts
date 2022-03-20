@@ -8,7 +8,6 @@ class UserController {
    * UserController
    */
   public static async UserController(_req: Request, _res: Response): Promise<void> {
-    debug(_req.body);
     const User = new UserModel(_req.body);
 
     await User.save();
